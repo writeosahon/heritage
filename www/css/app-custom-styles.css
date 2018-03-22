@@ -5,5 +5,52 @@
 }
 /** STYLE FOR VALIDATION TOOLTIP (HINT.CSS) **/
 [data-hint]:after {
-    font-size: 0.75em !important;
+    font-size: 0.75rem !important;
 }
+
+/** STYLE FOR THE ANIMATION OF THE APP LOADER-MODAL BEGINS **/
+#loader-modal ons-icon[spin] { /* increase the speed of the loader spinner **/
+    -webkit-animation: ons-icon-spin 0.4s infinite linear;
+    -moz-animation: ons-icon-spin 0.4s infinite linear;
+    animation: ons-icon-spin 0.4s infinite linear;
+}
+/** STYLE FOR THE ANIMATION OF THE APP LOADER-MODAL ENDS **/
+
+
+/** STYLE FOR MOVING BACKGROUND ANIMATION BEGINS **/
+@-webkit-keyframes moving-background-animation /* Safari and Chrome */ {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}
+@keyframes moving-background-animation /* Safari and Chrome */ {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 100% 0%;
+    }
+}
+.apply-moving-background-animation {
+    -webkit-animation: moving-background-animation 25s linear infinite alternate;
+    -moz-animation: moving-background-animation 25s linear infinite alternate;
+    -ms-animation: moving-background-animation 25s linear infinite alternate;
+    -o-animation: moving-background-animation 25s linear infinite alternate;
+    animation: moving-background-animation 25s linear infinite alternate;
+}
+/** STYLE FOR MOVING BACKGROUND ANIMATION ENDS **/
+
+
+/** STYLE FOR MAIN-MENU PAGE BEGINS **/
+#main-menu-page .page--material__background {
+    background-image: linear-gradient(45deg, rgba(61,180,112,0.6) 0%, rgba(15,255,255,0.6) 100%),
+    url('app-images/main-menu-background.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, cover;
+    background-position: 0px 0px;
+}
+
+/** STYLE FOR MAIN-MENU ENDS **/

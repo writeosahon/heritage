@@ -33,8 +33,8 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
             });
 
             // displaying prepping message
-            //$('#loader-modal-message').html("Loading App...");
-            //$('#loader-modal').get(0).show(); // show loader
+            $('#loader-modal-message').html("Loading App...");
+            $('#loader-modal').get(0).show(); // show loader
 
             // load the main-menu page
             $('ons-splitter').get(0).content.load("app-main-template");
@@ -89,6 +89,10 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 // listen for the back button event
                 $('#app-main-navigator').get(0).topPage.onDeviceBackButton =
                     utopiasoftware[utopiasoftware_app_namespace].controller.mainMenuPageViewModel.backButtonClicked;
+
+                $('#loader-modal').get(0).hide(); // hide the loader
+
+                $('.page--material__background', $thisPage).addClass('apply-moving-background-animation');
             }
         },
 
