@@ -1,94 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>[APP TITLE]</title>
+
+    <!-- style library to incorporate bootstrap grid layout,helper classes & responsiveness -->
+    <link rel="stylesheet" href="css/bootstrap-3.3.7.min.css">
 
     <!-- style libraries for the app (onsen ui) -->
-    <link rel="stylesheet" href="css/onsenui.css">
-    <link rel="stylesheet" href="css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/onsenui.min.css">
+    <link rel="stylesheet" href="css/onsen-css-components.min.css">
+    <!-- style libraries for font icons -->
     <link rel="stylesheet" href="css/font_awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="css/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
-    <!-- app custom font icons -->
-    <link rel="stylesheet" href="css/edoae-font-icons/css/edoae-font-style.css">
+    <!-- style library for hint.css tooltip -->
+    <link rel="stylesheet" href="css/hint.min.css">
 
-    <!--- style library used for materialize-css -->
-    <link rel="stylesheet" href="css/materialize.css">
+    <!--- style library used for ej2 -->
+    <link rel="stylesheet" href="css/ej2-material-16.1.29.css">
 
-    <!-- custom style library for app -->
+    <!-- app custom font icons --> <!-- use app custom font icons if necessary -->
+    <!--<link rel="stylesheet" href="css/app-custom-font-icons/css/app-custom-font-style.css">-->
+
+    <!--- custom style for app -->
     <link rel="stylesheet" href="css/app-custom-styles.css">
 
-    <meta charset="UTF-8">
-    <title>Heritage Assembly</title>
-
-    <!-- Content-Security-Policy tag -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' wss: ws: data: http: https: blob: heritagechurchapp: gap 'unsafe-inline' 'unsafe-eval'">
 
     <!-- polyfil for ecma script 2015 -->
     <script src="js/polyfill.min.js"></script>
 
+    <!-- library file for SystemJS module loader -->
+    <script src="js/system-0.21.0.js"></script>
+
     <!-- jquery library -->
     <script src="js/jquery-2.1.4.min.js"></script>
+
+    <!-- parsley library -->
+    <script src="js/parsley-2.8.1.min.js"></script>
 
     <!-- kendo libraries -->
     <script src="js/kendo.core.min.js"></script>
 
     <!-- script library for onsen ui -->
-    <script src="js/onsenui.2.2.4.min.js"></script>
+    <script src="js/onsenui-2.9.2.min.js"></script>
 
-    <!-- script library for materialize-css -->
-    <script src="js/materialize-0.98.2.min.js"></script>
-
-    <!-- hybrid script libraries for intel xdk and cordova -->
+    <!-- hybrid script libraries for cordova -->
     <script src="cordova.js"></script>
 
     <!-- app script -->
-    <script src="js/compiled-js/base-compiled.js"></script>
-    <script src="js/compiled-js/controller-compiled.js"></script>
-    <script src="js/compiled-js/model-compiled.js"></script>
+    <script src="js/compiled-js/base-compiled.min.js"></script>
+    <script src="js/compiled-js/controller-compiled.min.js"></script>
+    <script src="js/compiled-js/model-compiled.min.js"></script>
 
-    <!-- special script for triggering the intel xdk special device ready event i.e. "app.Ready" -->
-    <script src="xdk/init-dev.js"></script>
-
+    <!-- Content-Security-Policy tag -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' wss: ws: data: http: https: blob: heritagechurchapp: gap 'unsafe-inline' 'unsafe-eval'">
 </head>
 <body>
 
 <!-- splitter container housing the app -->
 <ons-splitter>
-    <ons-splitter-side id="side-menu" side="left" collapse width="100px">
+    <ons-splitter-side id="side-menu" side="left" collapse width="60%">
         <ons-page id="side-menu-page">
-            <ons-toolbar modifier="noshadow" style="background-color: #1b5e20">
-            </ons-toolbar>
-            <div class="row" style="background-color: #1b5e20">
-                <div class="col s12 waves-effect waves-light"
-                     style="text-align: center; color: #eeff41; border-bottom: solid 1px lightgray;
-                     padding-top: 0.5em;"
-                     onclick="utopiasoftware.edoae.controller.sideMenuViewModel.sideMenuListClicked('events schedule')">
-                    <ons-icon icon="md-edoae-icon-calendar-multiple"
-                              size="20px"></ons-icon>
-                    <span style="display: block; font-size: 0.7em;">
-                        Events Schedule
-                    </span>
-                </div>
 
-                <div class="col s12 waves-effect waves-light"
-                     style="text-align: center; color: #eeff41; border-bottom: solid 1px lightgray;
-                padding-top: 0.5em;"
-                     onclick="utopiasoftware.edoae.controller.sideMenuViewModel.sideMenuListClicked('hotels')">
-                    <ons-icon icon="md-city-alt"
-                              size="20px"></ons-icon>
-                    <span style="display: block; font-size: 0.7em;">
-                        Hotels
-                    </span>
-                </div>
+            <ons-list>
 
+                <ons-list-item tappable lock-on-drag="true">
+                </ons-list-item>
 
-            </div>
+            </ons-list>
         </ons-page>
     </ons-splitter-side>
     <ons-splitter-content id="splitter-content"></ons-splitter-content>
 </ons-splitter>
 
+<!-- signup template -->
+<ons-template id="signup-template">
+    <!-- signup navigator -->
+    <ons-navigator id="signup-navigator" page="signup-page.html"></ons-navigator>
+</ons-template>
+
+<!-- login template -->
+<ons-template id="login-template">
+    <!-- login navigator -->
+    <ons-navigator id="login-navigator" page="login-page.html"></ons-navigator>
+</ons-template>
 
 <!-- app-main navigator template page -->
 <ons-template id="app-main-template">
@@ -97,12 +94,11 @@
 </ons-template>
 
 <!-- loader modal -->
-<ons-modal id="loader-modal" direction="up">
+<ons-modal id="loader-modal" direction="up" style="background-color: rgba(0,0,0,0.8);">
     <div style="text-align: center">
-        <ons-progress-circular indeterminate></ons-progress-circular>
+        <ons-icon icon="md-chart-donut" size="100px" style="color: #f28340;" spin></ons-icon>
     </div>
-    <div id="loader-modal-message" style="text-align: center"></div>
+    <div id="loader-modal-message" style="text-align: center; margin-top: 0.5em; font-size: 1.2em;"></div>
 </ons-modal>
-
 </body>
 </html>
