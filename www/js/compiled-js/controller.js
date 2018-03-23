@@ -91,20 +91,24 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                     utopiasoftware[utopiasoftware_app_namespace].controller.mainMenuPageViewModel.backButtonClicked;
 
                 $('#loader-modal').get(0).hide(); // hide the loader
-
-                $('.page--material__background', $thisPage).addClass('apply-moving-background-animation');
             }
         },
 
         /**
          * method is triggered when page is shown
          */
-        pageShow: function(){},
+        pageShow: function(){
+            // add background animation class
+            $('.page--material__background', $thisPage).addClass('apply-moving-background-animation');
+        },
 
         /**
          * method is triggered when page is hidden
          */
-        pageHide: function(){},
+        pageHide: function(){
+            // remove background animation class
+            $('.page--material__background', $thisPage).removeClass('apply-moving-background-animation');
+        },
 
         /**
          * method is triggered when page is destroyed

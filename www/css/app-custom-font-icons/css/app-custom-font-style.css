@@ -7,7 +7,7 @@
 }
 .heritage-icon {
   display: inline-block;
-  font: normal normal normal 14px/1 'ally-font-icons';
+  font: normal normal normal 14px/1 'heritage-font-icons';
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -178,4 +178,24 @@
   -moz-osx-font-smoothing: grayscale;
 
   content: '\e900';
+}
+.zmdi-heritage-icon-bullhorn:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 'heritage-font-icons';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  content: '\e901';
+}
+.zmdi-heritage-icon-book-open-page-variant:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 'heritage-font-icons';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  content: '\e902';
 }

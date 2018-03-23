@@ -46,7 +46,7 @@ SystemJS.config({
 /*** END OF SYSTEMJS CONFIG **/
 
 
-//
+// constant that defines the app namespace
 const utopiasoftware_app_namespace = 'heritage';
 
 /**

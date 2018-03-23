@@ -35,11 +35,11 @@
     }
 }
 .apply-moving-background-animation {
-    -webkit-animation: moving-background-animation 25s linear infinite alternate;
-    -moz-animation: moving-background-animation 25s linear infinite alternate;
-    -ms-animation: moving-background-animation 25s linear infinite alternate;
-    -o-animation: moving-background-animation 25s linear infinite alternate;
-    animation: moving-background-animation 25s linear infinite alternate;
+    -webkit-animation: moving-background-animation 45s linear infinite alternate;
+    -moz-animation: moving-background-animation 45s linear infinite alternate;
+    -ms-animation: moving-background-animation 45s linear infinite alternate;
+    -o-animation: moving-background-animation 45s linear infinite alternate;
+    animation: moving-background-animation 45s linear infinite alternate;
 }
 /** STYLE FOR MOVING BACKGROUND ANIMATION ENDS **/
 
@@ -52,5 +52,4 @@
     background-size: contain, cover;
     background-position: 0px 0px;
 }
-
 /** STYLE FOR MAIN-MENU ENDS **/

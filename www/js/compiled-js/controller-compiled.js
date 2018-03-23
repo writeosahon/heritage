@@ -103,9 +103,7 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
 
                                     $('#loader-modal').get(0).hide(); // hide the loader
 
-                                    $('.page--material__background', $thisPage).addClass('apply-moving-background-animation');
-
-                                case 6:
+                                case 5:
                                 case 'end':
                                     return _context2.stop();
                             }
@@ -127,12 +125,18 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
         /**
          * method is triggered when page is shown
          */
-        pageShow: function pageShow() {},
+        pageShow: function pageShow() {
+            // add background animation class
+            $('.page--material__background', $thisPage).addClass('apply-moving-background-animation');
+        },
 
         /**
          * method is triggered when page is hidden
          */
-        pageHide: function pageHide() {},
+        pageHide: function pageHide() {
+            // remove background animation class
+            $('.page--material__background', $thisPage).removeClass('apply-moving-background-animation');
+        },
 
         /**
          * method is triggered when page is destroyed
