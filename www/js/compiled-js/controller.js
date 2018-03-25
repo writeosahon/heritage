@@ -44,7 +44,7 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
             // START ALL CORDOVA PLUGINS CONFIGURATIONS
             try{
                 // lock the orientation of the device to 'PORTRAIT'
-                 screen.lockOrientation('portrait');
+                 screen.orientation.lock('portrait');
             }
             catch(err){}
 
@@ -150,7 +150,11 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
             switch(menuItemLabel){
                 case "twitter":
                     $('#app-main-navigator').get(0).pushPage("twitter-feed-page.html");
-                    break
+                    break;
+
+                case "facebook":
+                    $('#app-main-navigator').get(0).pushPage("facebook-feed-page.html");
+                    break;
             }
         }
     },
@@ -177,6 +181,28 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 if(!ons.isReady() || utopiasoftware[utopiasoftware_app_namespace].model.isAppReady === false){
                     setTimeout(loadPageOnAppReady, 500); // call this function again after half a second
                     return;
+                }
+
+                // check if Internet Connection is available before proceeding
+                if(navigator.connection.type === Connection.NONE){ // no Internet Connection
+                    // inform the user that they cannot proceed without Internet
+                    window.plugins.toast.showWithOptions({
+                        message: "Twitter Feed cannot be created without an Internet Connection",
+                        duration: 4000,
+                        position: "top",
+                        styling: {
+                            opacity: 1,
+                            backgroundColor: '#ff0000', //red
+                            textColor: '#FFFFFF',
+                            textSize: 14
+                        }
+                    }, function(toastEvent){
+                        if(toastEvent && toastEvent.event == "touch"){ // user tapped the toast, so hide toast immediately
+                            window.plugins.toast.hide();
+                        }
+                    });
+
+                    return; // exit method immediately
                 }
 
                 if(!twttr.widgets){ // twitter widget library not loaded yet
@@ -246,6 +272,28 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
          * method is triggered when "Refresh" button is clicked
          */
         refreshButtonClicked: function(){
+
+            // check if Internet Connection is available before proceeding
+            if(navigator.connection.type === Connection.NONE){ // no Internet Connection
+                // inform the user that they cannot proceed without Internet
+                window.plugins.toast.showWithOptions({
+                    message: "Twitter Feed cannot be created without an Internet Connection",
+                    duration: 4000,
+                    position: "top",
+                    styling: {
+                        opacity: 1,
+                        backgroundColor: '#ff0000', //red
+                        textColor: '#FFFFFF',
+                        textSize: 14
+                    }
+                }, function(toastEvent){
+                    if(toastEvent && toastEvent.event == "touch"){ // user tapped the toast, so hide toast immediately
+                        window.plugins.toast.hide();
+                    }
+                });
+
+                return; // exit method immediately
+            }
 
             if(!twttr.widgets){ // twitter widget library not loaded yet
                 // wait for 1 second and try again

@@ -1,0 +1,24 @@
+<!-- facebook feed page -->
+<ons-page id="facebook-feed-page">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="$('#side-menu').get(0).toggle()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Twitter Feed</div>
+        <div class="right">
+            <ons-toolbar-button icon="md-refresh" onclick="utopiasoftware[utopiasoftware_app_namespace].
+            controller.facebookFeedPageViewModel.refreshButtonClicked()">
+                <span style="font-size: 0.68em;">Refresh</span>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <!-- page preloader -->
+    <ons-progress-bar class="page-preloader" indeterminate style="display: block; margin-top: 3px;"></ons-progress-bar>
+
+    <div id="facebook-feed-container" style="position: relative; width: 100%; height: 100%; top: 0; bottom: 0; display: block;
+            flex-direction: column; flex-wrap: nowrap; justify-content: space-around; align-items: center"></div>
+
+</ons-page>
