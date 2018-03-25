@@ -31,3 +31,15 @@ $(document).on("hide", "#main-menu-page", utopiasoftware[utopiasoftware_app_name
 
 // listen for when the MAIN MENU page is destroyed
 $(document).on("destroy", "#main-menu-page", utopiasoftware[utopiasoftware_app_namespace].controller.mainMenuPageViewModel.pageDestroy);
+
+// listen for the initialisation of the TWITTER FEED page
+$(document).on("init", "#twitter-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.pageInit);
+
+// listen for when the TWITTER FEED page is shown
+$(document).on("show", "#twitter-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.pageShow);
+
+// listen for when the TWITTER FEED page is hidden
+$(document).on("hide", "#twitter-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.pageHide);
+
+// listen for when the TWITTER FEED page is destroyed
+$(document).on("destroy", "#twitter-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.pageDestroy);
