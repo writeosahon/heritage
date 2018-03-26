@@ -57,14 +57,14 @@
         <!-- below requires the splash screen plugin -->
         <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
         <preference name="SplashMaintainAspectRatio" value="false"/>
-        <preference name="SplashScreenSpinnerColor" value="#DC723D" />
+        <preference name="SplashScreenSpinnerColor" value="#008000" />
     </platform>
 
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect --ignore-gpu-blacklist "/>
 
     <platform name="android" >
-        <preference name="android-minSdkVersion" value="16"/>
-        <preference name="android-targetSdkVersion" value="25"/>
+        <preference name="android-minSdkVersion" value="19"/> <!-- support Android 4.4 -->
+        <preference name="android-targetSdkVersion" value="25"/> <!-- android 7.1.1 -->
         <preference name="android-installLocation" value="auto"/>
         <preference name="android-signed" value="true"/>
         <preference name="Orientation" value="portrait"/>
@@ -75,7 +75,7 @@
 <platform name="android" >
     <preference name="CodePushDeploymentKey" value="lMFHud3OokbthgsFW13ez9NSrvpIf84a5d3a-cd65-48fa-8186-1d4c553b8f18" />
 </platform>
-
+-->
 
 <icon platform="android" src="package-assets/ldpi_icon.png" width="36" height="36" qualifier="ldpi"/>
 <icon platform="android" src="package-assets/mdpi_icon.png" width="48" height="48" qualifier="mdpi"/>
@@ -90,11 +90,10 @@
 <splash platform="android" src="package-assets/mdpi_landscape.png" width="470" height="320" orientation="landscape" qualifier="land-mdpi"/>
 <splash platform="android" src="package-assets/hdpi_landscape.png" width="640" height="480" orientation="landscape" qualifier="land-hdpi"/>
 <splash platform="android" src="package-assets/xhdpi_landscape.png" width="960" height="720" orientation="landscape" qualifier="land-xhdpi"/>
--->
 
-<config-file platform="android" parent="/manifest/application" mode="merge"> 
+<edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:launchMode='singleTop']" mode="merge">
     <activity android:launchMode="singleTop" />
-</config-file>
+</edit-config>
     <!-- used to change the background color of the small icon in ONE-SIGNAL push notification -->
     <!--<config-file platform="android" parent="/manifest/application" mode="add">
         <meta-data android:name="com.onesignal.NotificationAccentColor.DEFAULT" android:value="FF311B92" />
