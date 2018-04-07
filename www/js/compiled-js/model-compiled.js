@@ -44,4 +44,16 @@ $(document).on("hide", "#twitter-feed-page", utopiasoftware[utopiasoftware_app_n
 // listen for when the TWITTER FEED page is destroyed
 $(document).on("destroy", "#twitter-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.pageDestroy);
 
+// listen for the initialisation of the FACEBOOK FEED page
+$(document).on("init", "#facebook-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.facebookFeedPageViewModel.pageInit);
+
+// listen for when the FACEBOOK FEED page is shown
+$(document).on("show", "#facebook-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.facebookFeedPageViewModel.pageShow);
+
+// listen for when the FACEBOOK FEED page is hidden
+$(document).on("hide", "#facebook-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.facebookFeedPageViewModel.pageHide);
+
+// listen for when the FACEBOOK FEED page is destroyed
+$(document).on("destroy", "#facebook-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.facebookFeedPageViewModel.pageDestroy);
+
 //# sourceMappingURL=model-compiled.js.map

@@ -15,6 +15,7 @@
       </option>
       <option name="outputFromStdout" value="false" />
       <option name="program" value="$USER_HOME$/node_modules/.bin/babel.cmd" />
+      <option name="runOnExternalChanges" value="true" />
       <option name="scopeName" value="compile-scope" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$FileDir$" />
@@ -23,7 +24,7 @@
     <TaskOptions isEnabled="true">
       <option name="arguments" value="$FileName$ -o $FileNameWithoutExtension$.min.js" />
       <option name="checkSyntaxErrors" value="true" />
-      <option name="description" value="Compress .js files" />
+      <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="js" />
       <option name="immediateSync" value="false" />
@@ -33,7 +34,8 @@
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="$USER_HOME$/AppData/Roaming/npm/uglifyjs.cmd" />
+      <option name="program" value="$USER_HOME$/node_modules/.bin/uglifyjs.cmd" />
+      <option name="runOnExternalChanges" value="true" />
       <option name="scopeName" value="minify-scope" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$FileDir$" />

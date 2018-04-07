@@ -159,7 +159,9 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
         }
     },
 
-
+    /**
+     * view-model/controller object for Twitter Feed page
+     */
     twitterFeedPageViewModel: {
 
         twitterWidgetCode: `<a class="twitter-timeline"  href="https://twitter.com/HeritageAssembl"
@@ -187,7 +189,7 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 if(navigator.connection.type === Connection.NONE){ // no Internet Connection
                     // inform the user that they cannot proceed without Internet
                     window.plugins.toast.showWithOptions({
-                        message: "Twitter Feed cannot be created without an Internet Connection",
+                        message: "Twitter Feed cannot be retrieved without an Internet Connection",
                         duration: 4000,
                         position: "top",
                         styling: {
@@ -277,7 +279,7 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
             if(navigator.connection.type === Connection.NONE){ // no Internet Connection
                 // inform the user that they cannot proceed without Internet
                 window.plugins.toast.showWithOptions({
-                    message: "Twitter Feed cannot be created without an Internet Connection",
+                    message: "Twitter Feed cannot be retrieved without an Internet Connection",
                     duration: 4000,
                     position: "top",
                     styling: {
@@ -317,6 +319,164 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 );
                 // hide the page preloader
                 $('#twitter-feed-page .page-preloader').css("display", "none");
+            }, 2000);
+        }
+    },
+
+    /**
+     * view-model/controller object for Twitter Feed page
+     */
+    facebookFeedPageViewModel: {
+
+        /**
+         * property holds the code use tfo generate the facebook widget
+         */
+        facebookWidgetCode: '',
+
+        /**
+         * method is triggered when page is initialised
+         * @param event
+         */
+        pageInit: function(event){
+            var $thisPage = $(event.target); // get a reference to the current page
+
+            // call the function used to initialise the app page if the app is fully loaded
+            loadPageOnAppReady();
+
+            //function is used to initialise the page if the app is fully ready for execution
+            async function loadPageOnAppReady(){
+                // check to see if onsen is ready and if all app loading has been completed
+                if(!ons.isReady() || utopiasoftware[utopiasoftware_app_namespace].model.isAppReady === false){
+                    setTimeout(loadPageOnAppReady, 500); // call this function again after half a second
+                    return;
+                }
+
+                // check if Internet Connection is available before proceeding
+                if(navigator.connection.type === Connection.NONE){ // no Internet Connection
+                    // inform the user that they cannot proceed without Internet
+                    window.plugins.toast.showWithOptions({
+                        message: "Facebook Feed cannot be retrieved without an Internet Connection",
+                        duration: 4000,
+                        position: "top",
+                        styling: {
+                            opacity: 1,
+                            backgroundColor: '#ff0000', //red
+                            textColor: '#FFFFFF',
+                            textSize: 14
+                        }
+                    }, function(toastEvent){
+                        if(toastEvent && toastEvent.event == "touch"){ // user tapped the toast, so hide toast immediately
+                            window.plugins.toast.hide();
+                        }
+                    });
+
+                    return; // exit method immediately
+                }
+
+                // listen for the back button event
+                $('#app-main-navigator').get(0).topPage.onDeviceBackButton =
+                    utopiasoftware[utopiasoftware_app_namespace].controller.facebookFeedPageViewModel.backButtonClicked;
+
+                var faceBookFeedDimensions = {width: Math.round($("#facebook-feed-container", $thisPage).width()),
+                    height: Math.round($("#facebook-feed-container", $thisPage).height())}; // get the dimensions for the facebook widget container
+                // update the string code for the facebook widget
+                utopiasoftware[utopiasoftware_app_namespace].controller.
+                    facebookFeedPageViewModel.facebookWidgetCode = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fheritageassemblychurch&tabs=timeline&width='
+                    + faceBookFeedDimensions.width + '&height=' + faceBookFeedDimensions.height +
+                    '&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=1724754357799229" style="border:none;overflow:hidden; width: 95%; height: 100%;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>'
+
+
+                $('#loader-modal').get(0).hide(); // hide the loader
+
+                window.setTimeout(function(){ // wait for 2 seconds before proceding with complete page loading
+                    // remove any previous content from the container
+                    $("#facebook-feed-container", $thisPage).html('');
+                    // re-insert a fresh facebook widget now
+                    $("#facebook-feed-container", $thisPage).html(
+                        utopiasoftware[utopiasoftware_app_namespace].controller.
+                            facebookFeedPageViewModel.facebookWidgetCode);
+                    // hide the page preloader
+                    $('.page-preloader', $thisPage).css("display", "none");
+                }, 2000);
+            }
+        },
+
+        /**
+         * method is triggered when page is shown
+         */
+        pageShow: function(){
+        },
+
+        /**
+         * method is triggered when page is hidden
+         */
+        pageHide: function(){
+        },
+
+        /**
+         * method is triggered when page is destroyed
+         */
+        pageDestroy: function(){
+            // remove the facebook content
+            $('#facebook-feed-page #facebook-feed-container').html('');
+            // show the page preloader
+            $('#facebook-feed-page .page-preloader').css("display", "block");
+        },
+
+        /**
+         * method is triggered when back button or device back button is clicked
+         */
+        backButtonClicked: function(){
+
+            // check if the side menu is open
+            if($('ons-splitter').get(0).left.isOpen){ // side menu open, so close it
+                $('ons-splitter').get(0).left.close();
+                return; // exit the method
+            }
+
+            $('#app-main-navigator').get(0).popPage(); // display the previous page in the stack
+        },
+
+        /**
+         * method is triggered when "Refresh" button is clicked
+         */
+        refreshButtonClicked: function(){
+
+            // check if Internet Connection is available before proceeding
+            if(navigator.connection.type === Connection.NONE){ // no Internet Connection
+                // inform the user that they cannot proceed without Internet
+                window.plugins.toast.showWithOptions({
+                    message: "Facebook Feed cannot be retrieved without an Internet Connection",
+                    duration: 4000,
+                    position: "top",
+                    styling: {
+                        opacity: 1,
+                        backgroundColor: '#ff0000', //red
+                        textColor: '#FFFFFF',
+                        textSize: 14
+                    }
+                }, function(toastEvent){
+                    if(toastEvent && toastEvent.event == "touch"){ // user tapped the toast, so hide toast immediately
+                        window.plugins.toast.hide();
+                    }
+                });
+
+                return; // exit method immediately
+            }
+
+
+            // remove the facebook content
+            $('#facebook-feed-page #facebook-feed-container').html('');
+            // show the page preloader
+            $('#facebook-feed-page .page-preloader').css("display", "block");
+
+            window.setTimeout(function(){ // wait for 2 seconds before initiating the twitter-feed loading
+
+                // insert the facebook widget into the app
+                $('#facebook-feed-page #facebook-feed-container').html(utopiasoftware[utopiasoftware_app_namespace].controller.
+                    facebookFeedPageViewModel.facebookWidgetCode);
+                // hide the page preloader
+                $('#facebook-feed-page .page-preloader').css("display", "none");
             }, 2000);
         }
     }
