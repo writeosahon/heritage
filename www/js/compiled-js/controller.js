@@ -20,6 +20,7 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
      * NOTE: the keys used within the map will be identical to the same map value used in the SystemJS.config()
      */
     LOADED_MODULES: new Map(),
+
     /**
      * method contains the stratup/bootstrap code needed to initiate app logic execution
      */
@@ -65,6 +66,38 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
 
         }); // end of ons.ready()
 
+    },
+
+    /**
+     * view-model/controller for app side-menu
+     */
+    sideMenuPageViewModel: {
+
+        /**
+         * method is used to handle the click event on the side menu items
+         *
+         * @param menuItemLabel {String}
+         */
+        sideMenuItemClicked: function(menuItemLabel){
+
+            // close the side menu
+            $('ons-splitter').get(0).left.close();
+
+            // use a switch-case to determine what items where clicked
+            switch(menuItemLabel){
+                case "main menu":
+                    $('#app-main-navigator').get(0).resetToPage("main-menu-page.html", {pop: true});
+                    break;
+
+                case "facebook feed":
+                    $('#app-main-navigator').get(0).bringPageTop("facebook-feed-page.html");
+                    break;
+
+                case "twitter feed":
+                    $('#app-main-navigator').get(0).bringPageTop("twitter-feed-page.html");
+                    break;
+            }
+        }
     },
 
     /**
@@ -207,15 +240,16 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                     return; // exit method immediately
                 }
 
+                // listen for the back button event
+                $('#app-main-navigator').get(0).topPage.onDeviceBackButton =
+                    utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.backButtonClicked;
+
+
                 if(!twttr.widgets){ // twitter widget library not loaded yet
                     // wait for 1 second and try again
                     window.setTimeout(loadPageOnAppReady, 1000);
                     return;
                 }
-
-                // listen for the back button event
-                $('#app-main-navigator').get(0).topPage.onDeviceBackButton =
-                    utopiasoftware[utopiasoftware_app_namespace].controller.twitterFeedPageViewModel.backButtonClicked;
 
                 // insert the twitter widget into the app
                 $('#twitter-feed-container', $thisPage).html(utopiasoftware[utopiasoftware_app_namespace].controller.

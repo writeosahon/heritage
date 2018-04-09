@@ -53,3 +53,116 @@
     background-position: 0px 0px;
 }
 /** STYLE FOR MAIN-MENU ENDS **/
+
+
+/** STYLE FOR SIDE-MENU PAGE BEGINS **/
+#side-menu-page .page--material__background {
+    background-image: linear-gradient(45deg, rgba(61,180,112,0.9) 0%, rgba(61,180,112,0.9) 100%),
+    url('app-images/main-menu-background.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, cover;
+    background-position: 0px 0px;
+}
+/** STYLE FOR SIDE-MENU PAGE ENDS **/
+
+
+/** STYLE FOR LIST ON SIDE-MENU BEGINS **/
+.list-item--heritage-side-menu-list {
+    border: 0;
+    padding: 0 0 0 16px;
+    line-height: normal;
+}
+.list-item--heritage-side-menu-list__subtitle {
+    margin-top: 4px;
+}
+.list-item--heritage-side-menu-list:first-child {
+    box-shadow: none;
+}
+.list-item--heritage-side-menu-list__left {
+    padding: 14px 0;
+    min-width: 56px;
+    line-height: 1;
+    min-height: 48px;
+}
+.list-item--heritage-side-menu-list__left:empty,
+.list-item--heritage-side-menu-list__center {
+    padding: 14px 6px 14px 0;
+    border-color: #ffffff;
+    border-bottom: none;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-image: linear-gradient(0deg, #ffffff, #ffffff 100%);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+
+    .list-item--heritage-side-menu-list__left:empty,
+    .list-item--heritage-side-menu-list__center {
+        background-image: linear-gradient(0deg, #ffffff, #ffffff 50%, transparent 50%);
+    }
+}
+.list-item--heritage-side-menu-list__left:empty,
+.list-item--heritage-side-menu-list__center {
+    min-height: 48px;
+}
+.list-item--heritage-side-menu-list__right {
+    padding: 14px 16px 14px 0;
+    line-height: 1;
+    border-color: #ffffff;
+    border-bottom: none;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-image: linear-gradient(0deg, #ffffff, #ffffff 100%);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+
+    .list-item--heritage-side-menu-list__right {
+        background-image: linear-gradient(0deg, #ffffff, #ffffff 50%, transparent 50%);
+    }
+}
+.list-item--heritage-side-menu-list__right {
+    min-height: 48px;
+}
+.list-item--heritage-side-menu-list.list-item--longdivider {
+    border-bottom: 1px solid #ffffff;
+    border-bottom: none;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-image: linear-gradient(0deg, #ffffff, #ffffff 100%);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+
+    .list-item--heritage-side-menu-list.list-item--longdivider {
+        background-image: linear-gradient(0deg, #ffffff, #ffffff 50%, transparent 50%);
+    }
+}
+
+.list-header--heritage-side-menu-list {
+    background: #fff;
+    border: none;
+    font-size: 14px;
+    text-transform: none;
+    margin: -1px 0 0 0;
+    color: #757575;
+    font-weight: 500;
+    padding: 8px 16px;
+}
+.list-header--heritage-side-menu-list:not(:first-of-type) {
+    border-top: none;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-image: linear-gradient(180deg, #ffffff, #ffffff 100%);
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+
+    .list-header--heritage-side-menu-list:not(:first-of-type) {
+        background-image: linear-gradient(180deg, #ffffff, #ffffff 50%, transparent 50%);
+    }
+}
+.list-header--heritage-side-menu-list:not(:first-of-type) {
+    padding-top: 16px;
+}
+/** STYLE FOR LIST ON SIDE-MENU ENDS **/

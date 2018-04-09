@@ -64,12 +64,121 @@
 
 <!-- splitter container housing the app -->
 <ons-splitter>
-    <ons-splitter-side id="side-menu" side="left" collapse width="60%">
+    <ons-splitter-side id="side-menu" side="left" collapse width="65%" animation="reveal">
         <ons-page id="side-menu-page">
 
-            <ons-list>
+            <ons-toolbar modifier="transparent">
 
-                <ons-list-item tappable lock-on-drag="true">
+            </ons-toolbar>
+
+            <ons-list style="background-color: transparent">
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('main menu');"
+                style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-home" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style="font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Main Menu
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('news & events');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-heritage-icon-bullhorn" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style=" font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        News & Events
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('devotional');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-heritage-icon-book-open-page-variant" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style=" font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Devotional
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('video messages');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-movie-alt" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style=" font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Video Messages
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('live streaming');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-headset" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style=" font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Live Streaming
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('visit website');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-globe" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style=" font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Visit Website
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('facebook feed');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-facebook" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style="font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Facebook Feed
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('twitter feed');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-twitter" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style="font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Twitter Feed
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item modifier="longdivider heritage-side-menu-list" tappable lock-on-drag="true"
+                               onclick="utopiasoftware[utopiasoftware_app_namespace].controller.
+                               sideMenuPageViewModel.sideMenuItemClicked('contact us');"
+                               style="font-weight: bolder; color: #ffffff; text-shadow: -1px -1px 2px #000000; background-color: transparent">
+                    <div class="left" modifier="heritage-side-menu-list">
+                        <ons-icon icon="md-heritage-icon-contact-us" size="28px" class="list-item__icon" fixed-width></ons-icon>
+                    </div>
+                    <div class="center" style="font-size: 1.15em; text-align: left" modifier="heritage-side-menu-list">
+                        Contact Us
+                    </div>
                 </ons-list-item>
 
             </ons-list>
