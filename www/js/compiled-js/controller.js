@@ -517,6 +517,97 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 $('#facebook-feed-page .page-preloader').css("display", "none");
             }, 2000);
         }
+    },
+
+    /**
+     * this is the view-model/controller for the Contact Us page
+     */
+    contactUsPageViewModel: {
+
+        /**
+         * method is triggered when page is initialised
+         * @param event
+         */
+        pageInit: function(event){
+            var $thisPage = $(event.target); // get a reference to the current page
+
+            // call the function used to initialise the app page if the app is fully loaded
+            loadPageOnAppReady();
+
+            //function is used to initialise the page if the app is fully ready for execution
+            async function loadPageOnAppReady(){
+                // check to see if onsen is ready and if all app loading has been completed
+                if(!ons.isReady() || utopiasoftware[utopiasoftware_app_namespace].model.isAppReady === false){
+                    setTimeout(loadPageOnAppReady, 500); // call this function again after half a second
+                    return;
+                }
+
+                // listen for the back button event
+                $('#app-main-navigator').get(0).topPage.onDeviceBackButton =
+                    utopiasoftware[utopiasoftware_app_namespace].controller.contactUsPageViewModel.backButtonClicked;
+
+                $('#loader-modal').get(0).hide(); // hide the loader
+            }
+        },
+
+        /**
+         * method is triggered when page is shown
+         */
+        pageShow: function(){
+
+        },
+
+        /**
+         * method is triggered when page is hidden
+         */
+        pageHide: function(){
+            // remove background animation class
+            $('#main-menu-page .page--material__background').removeClass('apply-moving-background-animation');
+        },
+
+        /**
+         * method is triggered when page is destroyed
+         */
+        pageDestroy: function(){},
+
+        /**
+         * method is triggered when back button or device back button is clicked
+         */
+        backButtonClicked: function(){
+
+            // check if the side menu is open
+            if($('ons-splitter').get(0).left.isOpen){ // side menu open, so close it
+                $('ons-splitter').get(0).left.close();
+                return; // exit the method
+            }
+
+            ons.notification.confirm('Do you want to close the app?', {title: 'Quit App',
+                buttonLabels: ['No', 'Yes']}) // Ask for confirmation
+                .then(function(index) {
+                    if (index === 1) { // OK button
+                        navigator.app.exitApp(); // Close the app
+                    }
+                });
+        },
+
+        /**
+         * method is called when items for the app's main menu are clicked
+         *
+         * @param menuItemLabel {String} the label for the menu item that was clicked
+         */
+        mainMenuItemClicked: function(menuItemLabel){
+
+            // use a switch-case to determine what page to load
+            switch(menuItemLabel){
+                case "twitter":
+                    $('#app-main-navigator').get(0).pushPage("twitter-feed-page.html");
+                    break;
+
+                case "facebook":
+                    $('#app-main-navigator').get(0).pushPage("facebook-feed-page.html");
+                    break;
+            }
+        }
     }
 };
 
