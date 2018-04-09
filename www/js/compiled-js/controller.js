@@ -96,6 +96,10 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 case "twitter feed":
                     $('#app-main-navigator').get(0).bringPageTop("twitter-feed-page.html");
                     break;
+
+                case "contact us":
+                    $('#app-main-navigator').get(0).bringPageTop("contact-us-page.html");
+                    break;
             }
         }
     },
