@@ -1,0 +1,44 @@
+<!-- video message page -->
+<ons-page id="video-messages-page">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="$('#side-menu').get(0).toggle()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Video Messages</div>
+        <div class="right">
+            <ons-toolbar-button icon="md-refresh" onclick="utopiasoftware[utopiasoftware_app_namespace].
+            controller.twitterFeedPageViewModel.refreshButtonClicked()">
+                <span style="font-size: 0.68em;">Refresh</span>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <div style="position: fixed; width: 100%; top: 56px;">
+        <ons-search-input placeholder="Search Videos" style="width: 100%;"></ons-search-input>
+        <!-- page preloader -->
+        <ons-progress-bar class="page-preloader" indeterminate style="display: block;"></ons-progress-bar>
+    </div>
+
+    <div class="content" style="position: relative; top: 100px; width: 100%; display: block">
+        <ons-list style="background-color: transparent">
+
+            <ons-list-item modifier="nodivider" lock-on-drag="true" style="background-color: transparent">
+                <div class="e-card">
+                    <div class="e-card-content">
+                        <img src="css/app-images/main-menu-background.jpg" style="width: 100%; height: 5em;">
+                    </div>
+                    <div class="e-card-header">
+                        <div class="e-card-header-caption">
+                            <div class="e-card-header-title">Test Posting</div>
+                            <div class="e-card-sub-title">Date: 2nd April, 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </ons-list-item>
+        </ons-list>
+    </div>
+
+
+</ons-page>

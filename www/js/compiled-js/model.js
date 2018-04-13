@@ -55,3 +55,15 @@ $(document).on("hide", "#facebook-feed-page", utopiasoftware[utopiasoftware_app_
 
 // listen for when the FACEBOOK FEED page is destroyed
 $(document).on("destroy", "#facebook-feed-page", utopiasoftware[utopiasoftware_app_namespace].controller.facebookFeedPageViewModel.pageDestroy);
+
+// listen for the initialisation of the CONTACT US page
+$(document).on("init", "#contact-us-page", utopiasoftware[utopiasoftware_app_namespace].controller.contactUsPageViewModel.pageInit);
+
+// listen for when the CONTACT US page is shown
+$(document).on("show", "#contact-us-page", utopiasoftware[utopiasoftware_app_namespace].controller.contactUsPageViewModel.pageShow);
+
+// listen for when the CONTACT US page is hidden
+$(document).on("hide", "#contact-us-page", utopiasoftware[utopiasoftware_app_namespace].controller.contactUsPageViewModel.pageHide);
+
+// listen for when the CONTACT US page is destroyed
+$(document).on("destroy", "#contact-us-page", utopiasoftware[utopiasoftware_app_namespace].controller.contactUsPageViewModel.pageDestroy);

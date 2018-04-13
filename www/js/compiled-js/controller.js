@@ -40,6 +40,41 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
             // load the main-menu page
             $('ons-splitter').get(0).content.load("app-main-template");
 
+            // add listener for when the Internet network connection is offline
+            document.addEventListener("offline", function(){
+
+                // display a toast message to let user no there is no Internet connection
+                window.plugins.toast.showWithOptions({
+                    message: "No Internet Connection. App functionality will be limited",
+                    duration: 4000, // 4000 ms
+                    position: "bottom",
+                    styling: {
+                        opacity: 1,
+                        backgroundColor: '#000000',
+                        textColor: '#FFFFFF',
+                        textSize: 14
+                    }
+                });
+
+            }, false);
+
+            // add listener for when the Internet network connection is online
+            document.addEventListener("online", function(){
+
+                // display a toast message to let user no there is an active Internet connection
+                window.plugins.toast.showWithOptions({
+                    message: "Internet Connection is active",
+                    duration: 4000, // 4000 ms
+                    position: "bottom",
+                    styling: {
+                        opacity: 1,
+                        backgroundColor: '#000000',
+                        textColor: '#FFFFFF',
+                        textSize: 14
+                    }
+                });
+
+            }, false);
 
 
             // START ALL CORDOVA PLUGINS CONFIGURATIONS
@@ -51,10 +86,25 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
 
             try { // START ALL THE CORDOVA PLUGINS CONFIGURATION WHICH REQUIRE PROMISE SYNTAX
 
+                // prepare the inapp browser plugin
+                window.open = cordova.InAppBrowser.open;
+
                 // note: for most promises, we weill use async-wait syntax
                 // var a = await Promise.all([SystemJS.import('@syncfusion/ej2-base'), SystemJS.import('@syncfusion/ej2-dropdowns')]);
             }
-            catch(err){
+            catch(err){ // catch any errors that may have occurred during app starup
+                window.plugins.toast.showWithOptions({
+                    message: "Startup Error. App functionality may be limited. Always update the app to " +
+                    "get the best secure experience. Please contact us if problem continues",
+                    duration: 5000, // 5000 ms
+                    position: "bottom",
+                    styling: {
+                        opacity: 1,
+                        backgroundColor: '#000000',
+                        textColor: '#FFFFFF',
+                        textSize: 14
+                    }
+                });
             }
             finally{
                 // set status bar color
@@ -87,6 +137,15 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
             switch(menuItemLabel){
                 case "main menu":
                     $('#app-main-navigator').get(0).resetToPage("main-menu-page.html", {pop: true});
+                    break;
+
+                case "video messages":
+                    $('#app-main-navigator').get(0).bringPageTop("video-messages-page.html");
+                    break;
+
+                case "visit website":
+                    // open the website
+                    window.open('http://heritageassembly.net/', '_system');
                     break;
 
                 case "facebook feed":
@@ -185,6 +244,11 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
 
             // use a switch-case to determine what page to load
             switch(menuItemLabel){
+
+                case "video messages":
+                    $('#app-main-navigator').get(0).pushPage("video-messages-page.html");
+                    break;
+
                 case "twitter":
                     $('#app-main-navigator').get(0).pushPage("twitter-feed-page.html");
                     break;
@@ -561,8 +625,6 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
          * method is triggered when page is hidden
          */
         pageHide: function(){
-            // remove background animation class
-            $('#main-menu-page .page--material__background').removeClass('apply-moving-background-animation');
         },
 
         /**
@@ -581,32 +643,23 @@ utopiasoftware[utopiasoftware_app_namespace].controller = {
                 return; // exit the method
             }
 
-            ons.notification.confirm('Do you want to close the app?', {title: 'Quit App',
-                buttonLabels: ['No', 'Yes']}) // Ask for confirmation
-                .then(function(index) {
-                    if (index === 1) { // OK button
-                        navigator.app.exitApp(); // Close the app
-                    }
-                });
+            $('#app-main-navigator').get(0).popPage(); // display the previous page in the stack
         },
 
         /**
-         * method is called when items for the app's main menu are clicked
-         *
-         * @param menuItemLabel {String} the label for the menu item that was clicked
+         * method is triggered when email addresses from the "contact us" list are clicked
+         * @param emailAddress {String}
          */
-        mainMenuItemClicked: function(menuItemLabel){
+        contactEmailButtonClicked: function(emailAddress){
+            window.open('mailto:' + emailAddress, '_system');
+        },
 
-            // use a switch-case to determine what page to load
-            switch(menuItemLabel){
-                case "twitter":
-                    $('#app-main-navigator').get(0).pushPage("twitter-feed-page.html");
-                    break;
-
-                case "facebook":
-                    $('#app-main-navigator').get(0).pushPage("facebook-feed-page.html");
-                    break;
-            }
+        /**
+         * method is triggered when telephone numbers from the "contact us" list are clicked
+         * @param telephoneNumber {String}
+         */
+        contactTelephoneButtonClicked: function(telephoneNumber){
+            window.open('tel:' + telephoneNumber, '_system');
         }
     }
 };
