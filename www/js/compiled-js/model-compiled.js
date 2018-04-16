@@ -68,4 +68,16 @@ $(document).on("hide", "#contact-us-page", utopiasoftware[utopiasoftware_app_nam
 // listen for when the CONTACT US page is destroyed
 $(document).on("destroy", "#contact-us-page", utopiasoftware[utopiasoftware_app_namespace].controller.contactUsPageViewModel.pageDestroy);
 
+// listen for the initialisation of the VIDEO MESSAGES page
+$(document).on("init", "#video-messages-page", utopiasoftware[utopiasoftware_app_namespace].controller.videoMessagesPageViewModel.pageInit);
+
+// listen for when the VIDEO MESSAGES page is shown
+$(document).on("show", "#video-messages-page", utopiasoftware[utopiasoftware_app_namespace].controller.videoMessagesPageViewModel.pageShow);
+
+// listen for when the CONTACT US page is hidden
+$(document).on("hide", "#video-messages-page", utopiasoftware[utopiasoftware_app_namespace].controller.videoMessagesPageViewModel.pageHide);
+
+// listen for when the CONTACT US page is destroyed
+$(document).on("destroy", "#video-messages-page", utopiasoftware[utopiasoftware_app_namespace].controller.videoMessagesPageViewModel.pageDestroy);
+
 //# sourceMappingURL=model-compiled.js.map
